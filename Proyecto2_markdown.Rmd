@@ -1,0 +1,197 @@
+---
+title: "Proyecto2"
+author: "Felix Morales - Jose Andres"
+date: "2025-06-06"
+output: html_document
+---
+
+# 1) Ingeniería Ambiental
+
+## 1.1) Informacion basica de la carrera
+<p style="font-size: 16px;">
+La ingeniería ambiental está orientada a brindar soluciones científicas y tecnológicas en el campo de la prevención, control y corrección de problemas ambientales, en forma integral. El fin es cubrir la necesidad de desarrollar e implantar sistemas de gestión ambiental, evaluación de impacto ambiental y diseños de sistemas de tratamiento de desechos (sólidos, líquidos y gaseosos) en un mercado globalizado. El TEC forma líderes en este campo de acuerdo con los compromisos adquiridos por Costa Rica en los convenios internacionales y en la normativa legal vigente.
+</p>
+
+<p style="font-size: 16px;">
+Esta carrera se imparte en horario diurno en la Sede Central de Cartago y el grado académico que se obtiene es de licenciatura.
+</p>
+
+## 1.2) Perfil profesional
+<p style="font-size: 16px;">
+Costa Rica es un país en vías de desarrollo que necesita profesionales en el campo de la ingeniería ambiental. El profesional del TEC es una persona sensible a los problemas ambientales y sociales que afectan tanto a Costa Rica como al resto del mundo. Por esa razón, busca estrategias y diseña procesos que mitigan el daño de la actividad humana en el medio ambiente.
+</p>
+
+<p style="font-size: 16px;">
+Las posibilidades laborales se concentran en empresas e instituciones dedicadas a las siguientes actividades:
+</p>
+
+* Manufactura y comercio.
+* Industrias químicas de proceso.
+* Empresas comercializadoras de equipo e insumos ambientales.
+* Sector público y municipal.
+* Organizaciones ambientales.
+* Brindar consultorías en servicios industriales e - > instituciones educativas.
+
+## 1.3) Facilidades
+* Docentes especializados y de un alto nivel académico.
+* Se cuenta con el Centro de Investigación en Protección Ambiental.
+* Laboratorio de servicios químicos y microbiológicos.
+
+## 1.4) Laboratorios
+Laboratorio de servicios químicos y microbiológicos.
+
+# 2) Grafo
+
+## 2.1) Caracteristicas
+### 2.1.1) Color
+
+<p style="font-size: 16px;">
+Para poder diferenciar grupos de nodos se colorearon segun al area a la que pertenecen. Las areas son las siguientes:
+</p>
+
+* Rosado: Ambiental
+* Verde: Especifico de carrera
+* Amarillo: Formacion basica
+* Azul claro: General
+* Azul oscuro: Gestion ambiental
+* Anaranjado: Gestion de la energia
+* Rojo: Gestion del recurso hidrico
+* Morado: Gestion integral de emisiones atmosfericas
+* Morado claro: Gestion integral de residuos solidos
+* Blanco: No posee area especifica
+
+
+### 2.1.2) Formas
+
+<p style="font-size: 16px;">
+Ademas del color se le dio forma a los nodos para poder diferenciarlos, en este caso la forma de la figura depende de la cantidad de creditos del curso. Las formas son las siguientes:
+</p>
+* 0 creditos son como rectangulo
+* 1 credito triangulos
+* 2 creditos elipse
+* 3 creditos circulos
+* 4 creditos rombos
+* 8 creditos estrella para que lo edite en el markdown
+
+### 2.1.3) Identificadores
+
+<p style="font-size: 16px;">
+Debido a que poner nombres provocaba que los nodos se volviesen enormes y se solaparan. Solamente se va a identificar mediante el ID de cada uno de los cursos.
+</p>
+
+### 2.1.4) Lineas
+
+<p style="font-size: 16px;">
+Se van a utilizar dos tipos de enlaces para unir los nodos:
+</p>
+
+* Lineas rojas: Son requisito de un curso de otro bloque
+* Lineas azules: Son correquisito de un curso del mismo bloque
+
+### 2.1.5) Jerarquia
+
+<p style="font-size: 16px;">
+La jerarquia de los nodos va a ser mediante niveles. Cada nivel esta hecho para que contenga a los cursos de un bloque o semestre.
+</p>
+
+### 2.1.6) Adicional
+<p style="font-size: 16px;">
+Si se desea tener una mejor vista de los datos, puede mantener el puntero del mouse sobre los nodos para visualizar su informacion completa
+</p>
+
+```{r grafo, echo=FALSE, message=FALSE, warning=FALSE}
+library(visNetwork)
+library(dplyr)
+
+# Leer archivos
+nodosProyecto <- read.csv("C:\\Users\\Felix Gabriel\\Documents\\Proyecto 2\\Datos\\NodosProyecto2.csv", stringsAsFactors = FALSE)
+enlacesProyecto <- read.csv("C:\\Users\\Felix Gabriel\\Documents\\Proyecto 2\\Datos\\EnlacesProyecto2.csv", stringsAsFactors = FALSE)
+
+# Definir los nodos con forma según créditos exactos
+nodos <- nodosProyecto %>%
+  mutate(
+    id = Siglas,
+    label = Siglas,
+    title = paste0(
+      "<b>", Siglas, "</b><br>",
+      "Nombre: ", Nombre, "<br>",
+      "Bloque: ", Bloque, "<br>",
+      "Créditos: ", Creditos, "<br>",
+      "Horas: ", Horas, "<br>",
+      "Área: ", Area.Disciplina
+    ),
+    group = Area.Disciplina,
+    shape = case_when(
+      Creditos == 0 ~ "box",
+      Creditos == 1 ~ "triangle",
+      Creditos == 2 ~ "ellipse",
+      Creditos == 3 ~ "circle",
+      Creditos == 4 ~ "diamond",
+      Creditos == 8 ~ "star",
+      TRUE ~ "ellipse"  # Forma por defecto si no coincide
+    ),
+    value = Creditos,   
+    y = as.numeric(Bloque) * 200,
+    x = ave(Bloque, Bloque, FUN = function(z) seq_along(z) * 200)
+  )
+
+# Ajustar nodos aislados
+nodos_con_enlaces <- unique(c(enlacesProyecto$from, enlacesProyecto$to))
+nodos <- nodos %>%
+  mutate(
+    aislado = !(id %in% nodos_con_enlaces),
+    y = ifelse(aislado, y - 100, y) 
+  )
+
+# Ajustar tamaño mínimo para círculos
+nodos <- nodos %>%
+  mutate(
+    value = ifelse(shape == "circle", 15, value)
+  )
+
+# Preparar enlaces
+requisitos <- enlacesProyecto %>%
+  filter(Tipo == "Requisito") %>%
+  mutate(
+    from = Origen,
+    to = Destino,
+    arrows = "to",
+    color = "red",
+    dashes = FALSE
+  )
+
+correquisitos <- enlacesProyecto %>%
+  filter(Tipo == "Correquisito") %>%
+  mutate(
+    from = Origen,
+    to = Destino,
+    arrows = "to",
+    color = "blue",
+    dashes = TRUE
+  )
+
+enlaces <- bind_rows(requisitos, correquisitos)
+
+# Crear grafo
+visNetwork(nodos, enlaces, height = "1000px", width = "100%") %>%
+  visNodes(
+    font = list(size = 18),
+    borderWidth = 2,
+    fixed = list(x = TRUE, y = TRUE),
+    color = list(background = "white", border = "black"),
+    scaling = list(min = 15, max = 30)
+  ) %>%
+  visEdges(smooth = FALSE) %>%
+  visOptions(
+    highlightNearest = TRUE,
+    nodesNameSelection = TRUE,
+    selectedBy = list(variable = "group", multiple = TRUE)
+  ) %>%
+  visPhysics(enabled = FALSE) %>%
+  visInteraction(
+    dragView = TRUE,
+    zoomView = TRUE,
+    navigationButtons = TRUE
+  )
+
+```

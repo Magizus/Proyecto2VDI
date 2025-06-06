@@ -1,0 +1,70 @@
+Bloque,Siglas,Nombre,Creditos,Horas,Area Disciplina
+0,CI0200,Examen Diagnostico,0,0,
+0,CI0202,Ingles Basico,2,3,
+1,AI1100,Introduccion a la Ingenieria Ambiental,3,9,General
+1,BI1105,Biologia General para Ingenieria Ambiental,3,9,Formacion Basica
+1,BI1106,Laboratorio de Biologia General para Ingenieria Ambiental,1,3,Formacion Basica
+1,CI1106,Comunicacion Escrita,2,6,Formacion Basica
+1,CI1230,Ingles 1,2,6,Formacion Basica
+1,CS1502,Introduccion a la Tecnica Ciencia y Tecnologia,1,2,Formacion Basica
+1,MA0101,Matematica General,2,5,Formacion Basica
+1,QU1102,Laboratorio de Quimica Basica 1,1,2,Formacion Basica
+1,QU1106,Quimica Basica 1,3,4,Formacion Basica
+2,AI2101,Analisis Estadistico para Ingenieria Ambiental,3,9,Formacion Basica
+2,CI1107,Comunicacion Oral,1,3,Formacion Basica
+2,CI1231,Ingles 2,2,3,Formacion Basica
+2,FH1000,Centros de Formacion humanistica,0,2,Formacion Basica
+2,FI1101,Fisica General 1,3,4,Formacion Basica
+2,FI1201,Laboratorio Fisica General 1,1,2,Formacion Basica
+2,MA1102,Calculo Diferencial e Integral,4,5,Formacion Basica
+2,QU1104,Laboratorio de Quimica Basica 2,1,2,Formacion Basica
+2,QU1107,Quimica Basica 2,3,4,Formacion Basica
+3,AI3104,Ecosaneamiento Ambiental,1,3,Gestion del recurso hidrico
+3,CA2125,Elementos de Computacion,3,4,Formacion Basica
+3,FI2103,Fisica General 3,3,4,Formacion Basica
+3,MA1103,Calculo y Algebra Lineal,4,4,Formacion Basica
+3,QU2604,Quimica Ambiental y Analitica,3,9,Formacion Basica
+3,QU2605,Laboratorio de Quimica Ambiental y Analitica,3,9,Formacion Basica
+3,SE1100,Actividad Cultural 1,0,2,Formacion Basica
+4,AI3208,Hidraulica para Ingenieria Ambiental,3,9,Formacion Basica
+4,AI3212,Termodinamica y Cinetica Ambiental,4,12,Especifico de Carrera
+4,CS2101,Ambiente Humano,2,6,Formacion Basica
+4,CS4108,Derecho Ambiental,1,3,Formacion Basica
+4,FO2401,Analisis Topografico en Ingenieria Ambiental,3,9,Especifico de Carrera
+4,QU2409,Quimica Organica y Bioquimica,3,9,Formacion Basica
+4,QU2410,Laboratorio de Quimica Organica y Bioquimica,2,6,Formacion Basica
+5,AI3105,Laboratorio de Microbiologia AmbientaL,2,6,Especifico de Carrera
+5,AI3106,Micrologia Ambiental,3,9,Especifico de Carrera
+5,AI3107,Operaciones Unitarias,3,9,Especifico de Carrera
+5,AI3108,Dibujo e Interpretacion de Planos,3,9,Especifico de Carrera
+5,FO3401,Sistemas de Informacion Geografica,3,4,Especifico de Carrera
+5,MA2104,Calculo Superior,4,4,Formacion Basica
+6,AI3109,Laboratorio de Tratamiento de Agua Potable y Residual,2,6,Gestion del recurso hidrico
+6,AI3110,Diseño de Sistemas de Potabilizacion de Agua,3,9,Gestion del recurso hidrico
+6,AI3111,Administracion de Proyectos de Infraestructura Ambiental,3,9,Especifico de Carrera
+6,AI3112,Diseño y Tramamiento de Aguas Residuales,3,9,Gestion del recurso hidrico
+6,AI3209,Hidrologia,3,9,Gestion del recurso hidrico
+6,MA2105,Ecuaciones Diferenciales,4,4,Formacion Basica
+6,SE1200,Actividad Deportiva 1,0,2,Formacion Basica
+7,AE5121,Ingenieria Economica,3,3,Formacion Basica
+7,AI4101,Gestion y Diseño en Tratamiento de Residuos Solidos,3,9,Gestion integral de residuos solidos
+7,AI4102,Ingeniria en Emisiones Atmosfericas,3,4,Gestion integral de emisiones atmosfericas
+7,AI4103,Laboratorio de Ingenieria en Emisiones Atmosfericas,2,6,Gestion integral de emisiones atmosfericas
+7,AI4104,Administracion de la Energia en la Industria,3,9,Gestion de la energia
+7,MA3106,Metodos Numericas,4,4,Formacion Basica
+7,SE1400,Actividad Cultural-Deportiva,0,2,Formacion Basica
+8,AE4208,Desarrollo de Emprendedores,4,4,Formacion Basica
+8,AI5104,Analisis y Diseño Experimental para Ingenieria Ambiental,3,9,Especifico de Carrera
+8,AI5105,Consumo y Produccion Sostenible,3,9,Gestion ambiental
+8,AI5106,Gestion Ambiental,3,9,Gestion ambiental
+8,AI5107,Mecanica de Suelos para Ingenieria Ambiental,3,9,Especifico de Carrera
+8,CS3404,Seminario de Etica para la Ingenieria,2,5,Formacion Basica
+9,AI4304,Formulacion y Evaluacion de Proyectos Ambientales,3,3,Especifico de Carrera
+9,AI5903,Practica Profesional,4,0,
+9,AI6101,Metodologia de la Investigacion Ambiental,3,9,Especifico de Carrera
+9,AI6102,Huellas y Metricas Ambientales,3,9,Gestion ambiental
+9,AI6103,Electiva 1,3,9,
+9,CS2404,Seminario de Problematica Urbana,1,2,Formacion Basica
+10,AI6104,Seguridad y Salud Ocupacional en Ingenieria Ambiental,3,9,Gestion ambiental
+10,AI6105,Evaluacion de Impacto Ambiental,3,9,Ambiental
+10,AI6106,Proyecto de Graduacion,8,24,
